@@ -64,7 +64,7 @@
       "hello": "Hello World!",
       "path": "/foo/bar",
       "list": ["red", "green", "blue"],
-      "keys": [["semi",";"],["dot","."],["comma",","]]
+      "keys": {"semi": ";", "dot": ".", "comma":","}
     },
     "testcases": [
       ["{var:3}", "val"],
