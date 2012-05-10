@@ -7,6 +7,8 @@ This is a set of tests for implementations of
 to be reused by any implementation, to improve interoperability and
 implementation quality.
 
+If your project uses Git for version control, you can make uritemplate-tests into a [submodule](http://help.github.com/submodules/).
+
 Test Format
 -----------
 
@@ -33,6 +35,7 @@ For example:
          ]
       }
     }
+
 
 Tests Included
 --------------
