@@ -71,7 +71,7 @@
       ["{var:30}", "value"],
       ["{list}", "red,green,blue"],
       ["{list*}", "red,green,blue"],
-      ["{keys}", "comma,%2C,semi,%3B,dot,."],
+      ["{keys}", "comma,%2C,dot,.,semi,%3B"],
       ["{keys*}", "comma=%2C,dot=.,semi=%3B"],
       ["{+path:6}/here", "/foo/b/here"],
       ["{+list}", "red,green,blue"],
