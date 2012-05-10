@@ -12,7 +12,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -45,7 +45,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -68,8 +68,8 @@
         ["{var:30}", "value"],
         ["{list}", "red,green,blue"],
         ["{list*}", "red,green,blue"],
-        ["{keys}", "comma,%2C,dot,.,semi,%3B"],
-        ["{keys*}", "comma=%2C,dot=.,semi=%3B"]
+        ["{keys}", "semi,%3B,dot,.,comma,%2C"],
+        ["{keys*}", "semi=%3B,dot=.,comma=%2C"]
      ]
   },
   "3.2.3 Reserved Expansion" :
@@ -85,7 +85,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -109,8 +109,8 @@
         ["{+path,x}/here", "/foo/bar,1024/here"],
         ["{+list}", "red,green,blue"],
         ["{+list*}", "red,green,blue"],
-        ["{+keys}", "comma,,,dot,.,semi,;"],
-        ["{+keys*}", "comma=,,dot=.,semi=;"]
+        ["{+keys}", "semi,;,dot,.,comma,,"],
+        ["{+keys*}", "semi=;,dot=.,comma=,"]
      ]
   },
   "3.2.4 Fragment Expansion" :
@@ -126,7 +126,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -145,7 +145,7 @@
         ["{#path:6}/here", "#/foo/b/here"],
         ["{#list}", "#red,green,blue"],
         ["{#list*}", "#red,green,blue"],
-        ["{#keys}", "#comma,,,dot,.,semi,;"]
+        ["{#keys}", "#semi,;,dot,.,comma,,"]
      ]
   },
   "3.2.5 Label Expansion with Dot-Prefix" :
@@ -161,7 +161,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -180,8 +180,8 @@
        ["X{.undef}", "X"],
        ["X{.list}", "X.red,green,blue"],
        ["X{.list*}", "X.red.green.blue"],
-       ["X{.keys}", "X.comma,%2C,dot,.,semi,%3B"],
-       ["X{.keys*}", "X.comma=%2C.dot=..semi=%3B"],
+       ["X{.keys}", "X.semi,%3B,dot,.,comma,%2C"],
+       ["X{.keys*}", "X.semi=%3B.dot=..comma=%2C"],
        ["X{.empty_keys}", "X"],
        ["X{.empty_keys*}", "X"]
      ]
@@ -199,7 +199,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -220,8 +220,8 @@
        ["{/list}", "/red,green,blue"],
        ["{/list*}", "/red/green/blue"],
        ["{/list*,path:4}", "/red/green/blue/%2Ffoo"],
-       ["{/keys}", "/comma,%2C,dot,.,semi,%3B"],
-       ["{/keys*}", "/comma=%2C/dot=./semi=%3B"]
+       ["{/keys}", "/semi,%3B,dot,.,comma,%2C"],
+       ["{/keys*}", "/semi=%3B/dot=./comma=%2C"]
      ]
   },
   "3.2.7 Path-Style Parameter Expansion" :
@@ -237,7 +237,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -257,8 +257,8 @@
         ["{;x,y,undef}", ";x=1024;y=768"],
         ["{;list}", ";list=red,green,blue"],
         ["{;list*}", ";list=red;list=green;list=blue"],
-        ["{;keys}", ";keys=comma,%2C,dot,.,semi,%3B"],
-        ["{;keys*}", ";comma=%2C;dot=.;semi=%3B"]
+        ["{;keys}", ";keys=semi,%3B,dot,.,comma,%2C"],
+        ["{;keys*}", ";semi=%3B;dot=.;comma=%2C"]
      ]
   },
   "3.2.8 Form-Style Query Expansion" :
@@ -274,7 +274,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -291,8 +291,8 @@
         ["{?var:3}", "?var=val"],
         ["{?list}", "?list=red,green,blue"],
         ["{?list*}", "?list=red&list=green&list=blue"],
-        ["{?keys}", "?keys=comma,%2C,dot,.,semi,%3B"],
-        ["{?keys*}", "?comma=%2C&dot=.&semi=%3B"]
+        ["{?keys}", "?keys=semi,%3B,dot,.,comma,%2C"],
+        ["{?keys*}", "?semi=%3B&dot=.&comma=%2C"]
      ]
   },
   "3.2.9 Form-Style Query Continuation" :
@@ -308,7 +308,7 @@
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
        "list"       : ["red", "green", "blue"],
-       "keys"       : { "semi" : ";", "dot" : ".", "comma" : ","},
+       "keys"       : [ ["semi", ";"] , ["dot","."], ["comma",","] ],
        "v"          : "6",
        "x"          : "1024",
        "y"          : "768",
@@ -325,8 +325,8 @@
           ["{&x,y,undef}", "&x=1024&y=768"],
           ["{&list}", "&list=red,green,blue"],
           ["{&list*}", "&list=red&list=green&list=blue"],
-          ["{&keys}", "&keys=comma,%2C,dot,.,semi,%3B"],
-          ["{&keys*}", "&comma=%2C&dot=.&semi=%3B"]
+          ["{&keys}", "&keys=semi,%3B,dot,.,comma,%2C"],
+          ["{&keys*}", "&semi=%3B&dot=.&comma=%2C"]
      ]
   }
 }
