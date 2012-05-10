@@ -1,6 +1,7 @@
 {
-  "Level 1 Examples" : 
+  "Level 1 Examples" :
   {
+    "level": 1,
     "variables": {
        "var"   : "value",
        "hello" : "Hello World!"
@@ -10,8 +11,9 @@
         ["{hello}", "Hello%20World%21"]
      ]
   },
-  "Level 2 Examples" : 
+  "Level 2 Examples" :
   {
+    "level": 2,
     "variables": {
        "var"   : "value",
        "hello" : "Hello World!",
@@ -24,8 +26,9 @@
         ["here?ref={+path}", "here?ref=/foo/bar"]
      ]
   },
-  "Level 3 Examples" : 
+  "Level 3 Examples" :
   {
+    "level": 3,
     "variables": {
        "var"   : "value",
        "hello" : "Hello World!",
@@ -53,7 +56,61 @@
         ["{&x,y,empty}", "&x=1024&y=768&empty="]
      ]
   },
-  "3.2.1 Variable Expansion" : 
+  "Level 4 Examples" :
+  {
+    "level": 4,
+    "variables": {
+      "var": "value",
+      "hello": "Hello World!",
+      "path": "/foo/bar",
+      "list": ("red", "green", "blue"),
+      "keys": [("semi",";"),("dot","."),("comma",",")]
+    },
+    "testcases": [
+      ["{var:3}", "val"],
+      ["{var:30}", "value"],
+      ["{list}", "red,green,blue"],
+      ["{list*}", "red,green,blue"],
+      ["{keys}", "semi,%3B,dot,.,comma,%2C"],
+      ["{keys*}", "semi=%3B,dot=.,comma=%2C"],
+      ["{+path:6}/here", "/foo/b/here"],
+      ["{+list}", "red,green,blue"],
+      ["{+list*}", "red,green,blue"],
+      ["{+keys}", "semi,;,dot,.,comma,,"],
+      ["{+keys*}", "semi=;,dot=.,comma=,"],
+      ["{#path:6}/here", "#/foo/b/here"],
+      ["{#list}", "#red,green,blue"],
+      ["{#list*}", "#red,green,blue"],
+      ["{#keys}", "#semi,;,dot,.,comma,,"],
+      ["{#keys*}", "#semi=;,dot=.,comma=,"],
+      ["X{.var:3}", "X.val"],
+      ["X{.list}", "X.red,green,blue"],
+      ["X{.list*}", "X.red.green.blue"],
+      ["X{.keys}", "X.semi,%3B,dot,.,comma,%2C"],
+      ["{/var:1,var}", "/v/value"],
+      ["{/list}", "/red,green,blue"],
+      ["{/list*}", "/red/green/blue"],
+      ["{/list*,path:4}", "/red/green/blue/%2Ffoo"],
+      ["{/keys}", "/semi,%3B,dot,.,comma,%2C"],
+      ["{/keys*}", "/semi=%3B/dot=./comma=%2C"],
+      ["{;hello:5}", ";hello=Hello"],
+      ["{;list}", ";list=red,green,blue"],
+      ["{;list*}", ";list=red;list=green;list=blue"],
+      ["{;keys}", ";keys=semi,%3B,dot,.,comma,%2C"],
+      ["{;keys*}", ";semi=%3B;dot=.;comma=%2C"],
+      ["{?var:3}", "?var=val"],
+      ["{?list}", "?list=red,green,blue"],
+      ["{?list*}", "?list=red&list=green&list=blue"],
+      ["{?keys}", "?keys=semi,%3B,dot,.,comma,%2C"],
+      ["{?keys*}", "?semi=%3B&dot=.&comma=%2C"],
+      ["{&var:3}", "&var=val"],
+      ["{&list}", "&list=red,green,blue"],
+      ["{&list*}", "&list=red&list=green&list=blue"],
+      ["{&keys}", "&keys=semi,%3B,dot,.,comma,%2C"],
+      ["{&keys*}", "&semi=%3B&dot=.&comma=%2C"]
+    ]
+  },
+  "3.2.1 Variable Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -61,7 +118,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -85,8 +142,8 @@
         ["{?count*}", "?count=one&count=two&count=three"],
         ["{&count*}", "&count=one&count=two&count=three"]
       ]
-  },  
-  "3.2.2 Simple String Expansion" : 
+  },
+  "3.2.2 Simple String Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -94,7 +151,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -125,8 +182,8 @@
         ["{keys}", "comma,%2C,dot,.,semi,%3B"],
         ["{keys*}", "comma=%2C,dot=.,semi=%3B"]
      ]
-  },  
-  "3.2.3 Reserved Expansion" : 
+  },
+  "3.2.3 Reserved Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -134,7 +191,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -166,8 +223,8 @@
         ["{+keys}", "comma,,,dot,.,semi,;"],
         ["{+keys*}", "comma=,,dot=.,semi=;"]
      ]
-  },  
-  "3.2.4 Fragment Expansion" : 
+  },
+  "3.2.4 Fragment Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -175,7 +232,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -201,8 +258,8 @@
         ["{#list*}", "#red,green,blue"],
         ["{#keys}", "#comma,,,dot,.,semi,;"]
      ]
-  },  
-  "3.2.5 Label Expansion with Dot-Prefix" : 
+  },
+  "3.2.5 Label Expansion with Dot-Prefix" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -210,7 +267,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -239,8 +296,8 @@
        ["X{.empty_keys}", "X"],
        ["X{.empty_keys*}", "X"]
      ]
-  },  
-  "3.2.6 Path Segment Expansion" : 
+  },
+  "3.2.6 Path Segment Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -248,7 +305,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -277,8 +334,8 @@
        ["{/keys}", "/comma,%2C,dot,.,semi,%3B"],
        ["{/keys*}", "/comma=%2C/dot=./semi=%3B"]
      ]
-  },   
-  "3.2.7 Path-Style Parameter Expansion" : 
+  },
+  "3.2.7 Path-Style Parameter Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -286,7 +343,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -315,7 +372,7 @@
         ["{;keys*}", ";comma=%2C;dot=.;semi=%3B"]
      ]
   },
-  "3.2.8 Form-Style Query Expansion" : 
+  "3.2.8 Form-Style Query Expansion" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -323,7 +380,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
@@ -349,7 +406,7 @@
         ["{?keys*}", "?comma=%2C&dot=.&semi=%3B"]
      ]
   },
-  "3.2.9 Form-Style Query Continuation" : 
+  "3.2.9 Form-Style Query Continuation" :
   {
     "variables": {
        "count"      : ["one", "two", "three"],
@@ -357,7 +414,7 @@
        "dub"        : "me/too",
        "hello"      : "Hello World!",
        "half"       : "50%",
-       "var"        : "value", 
+       "var"        : "value",
        "who"        : "fred",
        "base"       : "http://example.com/home/",
        "path"       : "/foo/bar",
