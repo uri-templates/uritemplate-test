@@ -15,16 +15,22 @@ Test Format
 Each test file is a [JSON](http://tools.ietf.org/html/RFC6627) document
 containing an object whose properties are groups of related tests.
 
-Each group, in turn, is an object with two child objects:
+Each group, in turn, is an object with three children:
 
-* variables - an object representing the variables that are available to the tests in the suite
-* testcases - a list of testcases, where each case is a two-member list, the first being the template, the second being the template after variable interpolation.
+* level - the level of the tests covered, as per the RFC (optional; if absent,
+  assume level 4).
+* variables - an object representing the variables that are available to the
+  tests in the suite
+* testcases - a list of testcases, where each case is a two-member list, the
+  first being the template, the second being the template after variable
+  interpolation.
 
 For example:
 
     {
       "Level 1 Examples" : 
       {
+        "level": 1,
         "variables": {
            "var"   : "value",
            "hello" : "Hello World!"
@@ -43,7 +49,7 @@ Tests Included
 The following tests are included:
 
 * spec-examples.json - The complete set of example templates from the RFC
-
+* spec-examples-by-section - The examples, section by section
 
 License
 -------
