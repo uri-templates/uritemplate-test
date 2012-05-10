@@ -63,8 +63,8 @@
       "var": "value",
       "hello": "Hello World!",
       "path": "/foo/bar",
-      "list": ("red", "green", "blue"),
-      "keys": [("semi",";"),("dot","."),("comma",",")]
+      "list": ["red", "green", "blue"],
+      "keys": [["semi",";"],["dot","."],["comma",","]]
     },
     "testcases": [
       ["{var:3}", "val"],
