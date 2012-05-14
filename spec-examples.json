@@ -145,8 +145,8 @@
         "/comma,%2C,semi,%3B,dot,.",
         "/dot,.,comma,%2C,semi,%3B",
         "/dot,.,semi,%3B,comma,%2C",
-        "/comma,%2C,dot,.,semi,%3B",
-        "/comma,%2C,semi,%3B,dot,."
+        "/semi,%3B,comma,%2C,dot,.",
+        "/semi,%3B,dot,.,comma,%2C"        
       ],
       ["{/keys*}", [ 
         "/comma=%2C/dot=./semi=%3B",
