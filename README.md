@@ -42,6 +42,9 @@ For example:
       }
     }
 
+Note that if the second member of the testcase is itself a list, then it 
+represents a set of equally valid alternatives.
+
 
 Tests Included
 --------------
