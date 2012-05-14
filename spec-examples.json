@@ -109,14 +109,14 @@
       ["{#path:6}/here", "#/foo/b/here"],
       ["{#list}", "#red,green,blue"],
       ["{#list*}", "#red,green,blue"],
-      ["{#keys}", 
+      ["{#keys}", [
         "#comma,,,dot,.,semi,;",
         "#comma,,,semi,;,dot,.",
         "#dot,.,comma,,,semi,;",
         "#dot,.,semi,;,comma,,",
         "#semi,;,comma,,,dot,.",
         "#semi,;,dot,.,comma,,"
-      ],
+      ]],
       ["{#keys*}", [
         "#comma=,,dot=.,semi=;",
         "#comma=,,semi=;,dot=.",
@@ -140,14 +140,14 @@
       ["{/list}", "/red,green,blue"],
       ["{/list*}", "/red/green/blue"],
       ["{/list*,path:4}", "/red/green/blue/%2Ffoo"],
-      ["{/keys}", 
+      ["{/keys}", [
         "/comma,%2C,dot,.,semi,%3B",
         "/comma,%2C,semi,%3B,dot,.",
         "/dot,.,comma,%2C,semi,%3B",
         "/dot,.,semi,%3B,comma,%2C",
         "/comma,%2C,dot,.,semi,%3B",
         "/comma,%2C,semi,%3B,dot,."
-      ],
+      ]],
       ["{/keys*}", [ 
         "/comma=%2C/dot=./semi=%3B",
         "/comma=%2C/semi=%3B/dot=.",
