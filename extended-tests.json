@@ -11,7 +11,7 @@
             "lang"         : "en",
             "geocode"      : ["37.76","-122.427"],
             "first_name"   : "John",
-            "last.name"    : "Doe",
+            "last.name"    : "Doe", 
             "Some%20Thing" : "foo"
         },
         "testcases":[
