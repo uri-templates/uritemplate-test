@@ -13,8 +13,8 @@
         },
         "testcases":[
 
-            [ "{/id*" , "" ],
-            [ "{/id*}{fields, token}",""]
+            [ "{/id*" , false ],
+            [ "{/id*}{fields, token}", true]
         ]
     }
 }
