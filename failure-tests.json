@@ -1,0 +1,20 @@
+{
+    "Failure Tests":{
+        "level":4,
+        "variables":{
+            "id" : "person",
+            "token" : "12345",
+            "fields" : ["id", "name", "picture"],
+            "format" : "json",
+            "q" : "URI Templates",
+            "page" : "5",
+            "lang" : "en",
+            "geocode" : ["37.76","-122.427"]
+        },
+        "testcases":[
+
+            [ "{/id*" , "" ],
+            [ "{/id*}{fields, token}",""]
+        ]
+    }
+}
