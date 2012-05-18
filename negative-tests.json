@@ -2,19 +2,17 @@
     "Failure Tests":{
         "level":4,
         "variables":{
-            "id" : "person",
-            "token" : "12345",
-            "fields" : ["id", "name", "picture"],
-            "format" : "json",
-            "q" : "URI Templates",
-            "page" : "5",
-            "lang" : "en",
-            "geocode" : ["37.76","-122.427"]
+            "id" : "thing",
+            "var":"value",
+            "hello":"Hello World!",
+            "empty":"",
+            "path":"/foo/bar",
+            "x":"1024",
+            "y":"768"
         },
         "testcases":[
-
-            [ "{/id*" , false ],
-            [ "{/id*}{fields, token}", true]
+            [ "{/id*",  false  ]
+            
         ]
     }
 }
