@@ -26,8 +26,8 @@
             	"/person?fields=name,id,picture&first_name=John&last_name=Doe&token=12345"]
             	],
             ["/search.{format}{?q,geocode,lang,locale,page,result_type}",
-            	[ "/search.json?q=URI%20Templates&lang=en&geocode=37.76,-122.427&page=5",
-            	  "/search.json?q=URI%20Templates&lang=en&geocode=-122.427,37.76&page=5"]
+            	[ "/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5",
+            	  "/search.json?q=URI%20Templates&geocode=-122.427,37.76&lang=en&page=5"]
                 ],
             ["/test{/Some%20Thing}", "/test/foo" ]
         ]
