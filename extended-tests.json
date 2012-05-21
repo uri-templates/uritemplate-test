@@ -11,19 +11,19 @@
             "lang"         : "en",
             "geocode"      : ["37.76","-122.427"],
             "first_name"   : "John",
-            "last_name"    : "Doe", 
+            "last.name"    : "Doe", 
             "Some%20Thing" : "foo"
         },
         "testcases":[
 
             [ "{/id*}" , "/person" ],
-            [ "{/id*}{?fields,first_name,last_name,token}" , [ 
-            	"/person?fields=id,name,picture&first_name=John&last_name=Doe&token=12345",
-            	"/person?fields=id,picture,name&first_name=John&last_name=Doe&token=12345",
-            	"/person?fields=picture,name,id&first_name=John&last_name=Doe&token=12345",
-            	"/person?fields=picture,id,name&first_name=John&last_name=Doe&token=12345",
-            	"/person?fields=name,picture,id&first_name=John&last_name=Doe&token=12345",
-            	"/person?fields=name,id,picture&first_name=John&last_name=Doe&token=12345"]
+            [ "{/id*}{?fields,first_name,last.name,token}" , [ 
+            	"/person?fields=id,name,picture&first_name=John&last.name=Doe&token=12345",
+            	"/person?fields=id,picture,name&first_name=John&last.name=Doe&token=12345",
+            	"/person?fields=picture,name,id&first_name=John&last.name=Doe&token=12345",
+            	"/person?fields=picture,id,name&first_name=John&last.name=Doe&token=12345",
+            	"/person?fields=name,picture,id&first_name=John&last.name=Doe&token=12345",
+            	"/person?fields=name,id,picture&first_name=John&last.name=Doe&token=12345"]
             	],
             ["/search.{format}{?q,geocode,lang,locale,page,result_type}",
             	[ "/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5",
