@@ -1,0 +1,67 @@
+{
+    "Additional Examples 1":{
+        "level":4,
+        "variables":{
+            "id"           : "person",
+            "token"        : "12345",
+            "fields"       : ["id", "name", "picture"],
+            "format"       : "json",
+            "q"            : "URI Templates",
+            "page"         : "5",
+            "lang"         : "en",
+            "geocode"      : ["37.76","-122.427"],
+            "first_name"   : "John",
+            "last_name"    : "Doe", 
+            "Some%20Thing" : "foo"
+        },
+        "testcases":[
+
+            [ "{/id*}" , "/person" ],
+            [ "{/id*}{?fields,first_name,last_name,token}" , [ 
+            	"/person?fields=id,name,picture&first_name=John&last_name=Doe&token=12345",
+            	"/person?fields=id,picture,name&first_name=John&last_name=Doe&token=12345",
+            	"/person?fields=picture,name,id&first_name=John&last_name=Doe&token=12345",
+            	"/person?fields=picture,id,name&first_name=John&last_name=Doe&token=12345",
+            	"/person?fields=name,picture,id&first_name=John&last_name=Doe&token=12345",
+            	"/person?fields=name,id,picture&first_name=John&last_name=Doe&token=12345"]
+            	],
+            ["/search.{format}{?q,geocode,lang,locale,page,result_type}",
+            	[ "/search.json?q=URI%20Templates&lang=en&geocode=37.76,-122.427&page=5",
+            	  "/search.json?q=URI%20Templates&lang=en&geocode=-122.427,37.76&page=5"]
+                ],
+            ["/test{/Some%20Thing}", "/test/foo" ]
+        ]
+    },
+    "Additional Examples 2":{
+        "level":4,
+        "variables":{
+            "id" : ["person","albums"],
+            "token" : "12345",
+            "fields" : ["id", "name", "picture"],
+            "format" : "atom",
+            "q" : "URI Templates",
+            "page" : "10",
+            "start" : "5",
+            "lang" : "en",
+            "geocode" : ["37.76","-122.427"]
+        },
+        "testcases":[
+
+            [ "{/id*}" , ["/person/albums","/albums/person"] ],
+            [ "{/id*}{?fields, token}" , [ 
+            	"/person/albums?fields=id,name,picture&token=12345",
+            	"/person/albums?fields=id,picture,name&token=12345",
+            	"/person/albums?fields=picture,name,id&token=12345",
+            	"/person/albums?fields=picture,id,name&token=12345",
+            	"/person/albums?fields=name,picture,id&token=12345",
+            	"/person/albums?fields=name,id,picture&token=12345",
+            	"/albums/person?fields=id,name,picture&token=12345",
+            	"/albums/person?fields=id,picture,name&token=12345",
+            	"/albums/person?fields=picture,name,id&token=12345",
+            	"/albums/person?fields=picture,id,name&token=12345",
+            	"/albums/person?fields=name,picture,id&token=12345",
+            	"/albums/person?fields=name,id,picture&token=12345"]
+            	]
+        ]
+    }
+}
