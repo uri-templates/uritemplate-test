@@ -21,17 +21,17 @@
             [ "{var:prefix}",  false  ],
             [ "{hello:2*}",  false  ] ,
             [ "{??hello}",  false  ] ,
-            [ "{+keys:1}",  false  ],
-            [ "{;keys:1*}",  false  ],
             [ "{*keys?}",  false  ],
             [ "{?empty=default,var}",  false  ],
-            [ "?{-join|&|var,list}" , false ],
             [ "{var}{-prefix|/-/|var}" , false ],
             [ "?q={searchTerms}&amp;c={example:color?}" , false ],
             [ "x{?empty|foo=none}" , false ],
             [ "/h{#hello+}" , false ],
-            [ "/postion[+var]{?x,y}", true ],
-            [ "/vars/:var" , true ]
+            [ "/vars/:var" , false ],
+            [ "{keys:1}",  false  ],
+            [ "{+keys:1}",  false  ],
+            [ "{;keys:1*}",  false  ],
+            [ "?{-join|&|var,list}" , false ]
         ]
     }
 }
