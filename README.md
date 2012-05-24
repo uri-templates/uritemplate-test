@@ -56,10 +56,12 @@ For example:
 Tests Included
 --------------
 
-The following tests are included:
+The following test files are included:
 
 * spec-examples.json - The complete set of example templates from the RFC
-* spec-examples-by-section - The examples, section by section
+* spec-examples-by-section.json - The examples, section by section
+* extended-tests.json - more complex test cases
+* negative-tests.json - invalid templates
 
 License
 -------
