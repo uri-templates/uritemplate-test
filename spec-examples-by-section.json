@@ -324,7 +324,7 @@
           ";keys=comma,%2C,dot,.,semi,%3B",
           ";keys=comma,%2C,semi,%3B,dot,.",
           ";keys=dot,.,comma,%2C,semi,%3B",
-          ";keys=dot,.,comma,%2C,semi,%3B",
+          ";keys=dot,.,semi,%3B,comma,%2C",
           ";keys=semi,%3B,comma,%2C,dot,.",
           ";keys=semi,%3B,dot,.,comma,%2C"
         ]],
