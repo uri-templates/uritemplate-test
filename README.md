@@ -22,8 +22,18 @@ Each group, in turn, is an object with three children:
 * variables - an object representing the variables that are available to the
   tests in the suite
 * testcases - a list of testcases, where each case is a two-member list, the
-  first being the template, the second being the template after variable
-  interpolation.
+  first being the template, the second being the result of expanding the 
+  template with the provided variables.
+
+Note that the result string can be a few different things:
+
+* string - if the second member is a string, the result of expansion is 
+  expected to match it, character-for-character.
+* list - if the second member is a list of strings, the result of expansion
+  is expected to match one of them; this allows for templates that can 
+  expand into different, equally-acceptable URIs.
+* false - if the second member is boolean false, expansion is expected to
+  fail (i.e., the template was invalid).
 
 For example:
 
@@ -41,9 +51,6 @@ For example:
          ]
       }
     }
-
-Note that if the second member of the testcase is itself a list, then it 
-represents a set of equally valid alternatives.
 
 
 Tests Included
