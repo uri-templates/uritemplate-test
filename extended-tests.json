@@ -12,7 +12,11 @@
             "geocode"      : ["37.76","-122.427"],
             "first_name"   : "John",
             "last.name"    : "Doe", 
-            "Some%20Thing" : "foo"
+            "Some%20Thing" : "foo",
+            "flag"         : false,
+            "number"       : 6,
+            "long"         : 37.76,
+            "lat"          : -122.427
         },
         "testcases":[
 
@@ -29,7 +33,9 @@
             	[ "/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5",
             	  "/search.json?q=URI%20Templates&geocode=-122.427,37.76&lang=en&page=5"]
                 ],
-            ["/test{/Some%20Thing}", "/test/foo" ]
+            ["/test{/Some%20Thing}", "/test/foo" ],
+            ["/set{?flag,number}", "/set?flag=false&number=6"],
+            ["/loc{?long,lat}" , "/loc?long=37.76&lat=-122.427"]
         ]
     },
     "Additional Examples 2":{
