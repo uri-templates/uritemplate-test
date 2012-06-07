@@ -68,5 +68,43 @@
             	"/albums/person?fields=name,id,picture&token=12345"]
             	]
         ]
+    },
+    "Additional Examples 3 -- Variable Encoding": {
+        "level": 1,
+        "variables": {
+            "restricted": ":/?#[]@!$&()*+,;='",
+            "percent": "%"
+        },
+        "testcases": [
+            [ "{restricted}" , "%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{+restricted}" , ":/?#[]@!$&()*+,;='" ],
+            [ "{#restricted}" , "#:/?#[]@!$&()*+,;='" ],
+            [ "{/restricted}" , "/%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{;restricted}" , ";restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{.restricted}" , ".%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{?restricted}" , "?restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{&restricted}" , "&restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{percent}" , "%25" ],
+            [ "{+percent}" , "%" ],
+            [ "{#percent}" , "#%" ],
+            [ "{/percent}" , "/%25" ],
+            [ "{;percent}" , ";percent=%25" ],
+            [ "{.percent}" , ".%25" ],
+            [ "{?percent}" , "?percent=%25" ],
+            [ "{&percent}" , "&percent=%25" ]
+        ]
+    },
+    "Additional Examples 4 -- Literal Encoding": {
+        "level": 1,
+        "variables": {
+        },
+        "testcases": [
+            [ "one two" , "one%20two" ],
+            [":/?#[]@!$&()*+,;='", ":/?#[]@!$&()*+,;='"],
+            ["%20", "%20"],
+            ["%xyz", false],
+            ["%", false]
+        ]
     }
+
 }
