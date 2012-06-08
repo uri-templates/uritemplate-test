@@ -12,10 +12,7 @@
             "geocode"      : ["37.76","-122.427"],
             "first_name"   : "John",
             "last.name"    : "Doe", 
-            "Some%20Thing" : "foo",
-            "number"       : 6,
-            "long"         : 37.76,
-            "lat"          : -122.427
+            "Some%20Thing" : "foo"
         },
         "testcases":[
 
@@ -32,9 +29,7 @@
             	[ "/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5",
             	  "/search.json?q=URI%20Templates&geocode=-122.427,37.76&lang=en&page=5"]
                 ],
-            ["/test{/Some%20Thing}", "/test/foo" ],
-            ["/set{?number}", "/set?number=6"],
-            ["/loc{?long,lat}" , "/loc?long=37.76&lat=-122.427"]
+            ["/test{/Some%20Thing}", "/test/foo" ]
         ]
     },
     "Additional Examples 2":{
@@ -67,6 +62,137 @@
             	"/albums/person?fields=name,picture,id&token=12345",
             	"/albums/person?fields=name,id,picture&token=12345"]
             	]
+        ]
+    },
+    "Additional Examples 3 -- Variable Encoding": {
+        "level": 1,
+        "variables": {
+            "restricted": ":/?#[]@!$&()*+,;='",
+            "percent": "%",
+            "pctencoded%20name": "",
+            "mapWithEncodedName": {"encoded%20name": ""},
+            "mapWithRestrictedName": {"restricted=name": ""},
+            "mapWithUmlautName": {"ümlaut": ""}
+        },
+        "testcases": [
+            [ "{restricted}" , "%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{+restricted}" , ":/?#[]@!$&()*+,;='" ],
+            [ "{#restricted}" , "#:/?#[]@!$&()*+,;='" ],
+            [ "{/restricted}" , "/%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{;restricted}" , ";restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{.restricted}" , ".%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{?restricted}" , "?restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{&restricted}" , "&restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
+            [ "{percent}" , "%25" ],
+            [ "{+percent}" , "%25" ],
+            [ "{#percent}" , "#%25" ],
+            [ "{/percent}" , "/%25" ],
+            [ "{;percent}" , ";percent=%25" ],
+            [ "{.percent}" , ".%25" ],
+            [ "{?percent}" , "?percent=%25" ],
+            [ "{?percent}" , "?percent=%25" ],
+            [ "{&percent}" , "&percent=%25" ],
+            [ "{?pctencoded%20name}" , "?pctencoded%20name=" ],
+            [ "{?mapWithEncodedName*}" , "?encoded%20name=" ],
+            [ "{?mapWithRestrictedName*}" , "?restricted%3Dname=" ],
+            [ "{?mapWithUmlautName*}" , "?%FCmlaut=" ]
+        ]
+    },
+    "Additional Examples 4 -- Literal Encoding": {
+        "level": 1,
+        "variables": {
+        },
+        "testcases": [
+            [ "one two" , "one%20two" ],
+            [":/?#[]@!$&()*+,;='", ":/?#[]@!$&()*+,;='"],
+            ["%20", "%20"],
+            ["%xyz", false],
+            ["%", false]
+        ]
+    },
+    "Additional Examples 5 -- Empty Values": {
+        "level": 4,
+        "variables": {
+            "null": null,
+            "emptyString": "",
+            "emptyArr": [],
+            "emptyMap": {},
+            "arr": ["one", null, "three"],
+            "map": {"one": "1", "two": null, "": "3", "four": ""}
+        },
+        "testcases": [
+            ["{null}", ""],
+            ["{+null}", ""],
+            ["{#null}", ""],
+            ["{.null}", ""],
+            ["{/null}", ""],
+            ["{;null}", ""],
+            ["{?null}", ""],
+            ["{&null}", ""],
+            
+            ["{emptyArr}", ""],
+            ["{+emptyArr}", ""],
+            ["{#emptyArr}", ""],
+            ["{.emptyArr}", ""],
+            ["{/emptyArr}", ""],
+            ["{;emptyArr}", ""],
+            ["{?emptyArr}", ""],
+            ["{&emptyArr}", ""],
+
+            ["{emptyMap}", ""],
+            ["{+emptyMap}", ""],
+            ["{#emptyMap}", ""],
+            ["{.emptyMap}", ""],
+            ["{/emptyMap}", ""],
+            ["{;emptyMap}", ""],
+            ["{?emptyMap}", ""],
+            ["{&emptyMap}", ""],
+
+            ["{emptyString}", ""],
+            ["{+emptyString}", ""],
+            ["{#emptyString}", "#"],
+            ["{.emptyString}", "."],
+            ["{/emptyString}", "/"],
+            ["{;emptyString}", ";emptyString"],
+            ["{?emptyString}", "?emptyString="],
+            ["{&emptyString}", "&emptyString="],
+
+            ["{arr}", "one,three"],
+            ["{+arr}", "one,three"],
+            ["{#arr}", "#one,three"],
+            ["{.arr}", ".one,three"],
+            ["{/arr}", "/one,three"],
+            ["{;arr}", ";arr=one,three"],
+            ["{?arr}", "?arr=one,three"],
+            ["{&arr}", "&arr=one,three"],
+
+            ["{arr*}", "one,three"],
+            ["{+arr*}", "one,three"],
+            ["{#arr*}", "#one,three"],
+            ["{.arr*}", ".one.three"],
+            ["{/arr*}", "/one/three"],
+            ["{;arr*}", ";arr=one;arr=three"],
+            ["{?arr*}", "?arr=one&arr=three"],
+            ["{&arr*}", "&arr=one&arr=three"],
+
+            ["{map}", "one,1,,3,four,"],
+            ["{+map}", "one,1,,3,four,"],
+            ["{#map}", "#one,1,,3,four,"],
+            ["{.map}", ".one,1,,3,four,"],
+            ["{/map}", "/one,1,,3,four,"],
+            ["{;map}", ";map=one,1,,3,four,"],
+            ["{?map}", "?map=one,1,,3,four,"],
+            ["{&map}", "&map=one,1,,3,four,"],
+
+            ["{map*}", "one=1,=3,four="],
+            ["{+map*}", "one=1,=3,four="],
+            ["{#map*}", "#one=1,=3,four="],
+            ["{.map*}", ".one=1.=3.four="],
+            ["{/map*}", "/one=1/=3/four="],
+            ["{;map*}", ";one=1;=3;four="],
+            ["{?map*}", "?one=1&=3&four="],
+            ["{&map*}", "&one=1&=3&four="]
+
         ]
     }
 }
