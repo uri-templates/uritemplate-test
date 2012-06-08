@@ -12,10 +12,7 @@
             "geocode"      : ["37.76","-122.427"],
             "first_name"   : "John",
             "last.name"    : "Doe", 
-            "Some%20Thing" : "foo",
-            "number"       : 6,
-            "long"         : 37.76,
-            "lat"          : -122.427
+            "Some%20Thing" : "foo"
         },
         "testcases":[
 
@@ -32,9 +29,7 @@
             	[ "/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5",
             	  "/search.json?q=URI%20Templates&geocode=-122.427,37.76&lang=en&page=5"]
                 ],
-            ["/test{/Some%20Thing}", "/test/foo" ],
-            ["/set{?number}", "/set?number=6"],
-            ["/loc{?long,lat}" , "/loc?long=37.76&lat=-122.427"]
+            ["/test{/Some%20Thing}", "/test/foo" ]
         ]
     },
     "Additional Examples 2":{
@@ -85,8 +80,8 @@
             [ "{?restricted}" , "?restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
             [ "{&restricted}" , "&restricted=%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%2A%2B%2C%3B%3D%27" ],
             [ "{percent}" , "%25" ],
-            [ "{+percent}" , "%" ],
-            [ "{#percent}" , "#%" ],
+            [ "{+percent}" , "%25" ],
+            [ "{#percent}" , "#%25" ],
             [ "{/percent}" , "/%25" ],
             [ "{;percent}" , ";percent=%25" ],
             [ "{.percent}" , ".%25" ],
@@ -106,5 +101,4 @@
             ["%", false]
         ]
     }
-
 }
