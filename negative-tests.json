@@ -2,17 +2,19 @@
     "Failure Tests":{
         "level":4,
         "variables":{
-            "id"          : "thing",
-            "var"         : "value",
-            "hello"       : "Hello World!",
-            "empty"       : "",
-            "path"        : "/foo/bar",
-            "x"           : "1024",
-            "y"           : "768",
-            "list"        : ["red", "green", "blue"],
-            "keys"        : { "semi" : ";", "dot" : ".", "comma" : ","},
-            "example"     : "red",
-            "searchTerms" : "uri templates"
+            "id"                : "thing",
+            "var"               : "value",
+            "hello"             : "Hello World!",
+            "empty"             : "",
+            "path"              : "/foo/bar",
+            "x"                 : "1024",
+            "y"                 : "768",
+            "list"              : ["red", "green", "blue"],
+            "keys"              : { "semi" : ";", "dot" : ".", "comma" : ","},
+            "example"           : "red",
+            "searchTerms"       : "uri templates",
+            "default-graph-uri" : "http://www.example/book/",
+            "query"             : "SELECT ?book ?who WHERE { ?book dc:creator ?who }"
         },
         "testcases":[
             [ "{/id*",  false  ],
@@ -36,7 +38,8 @@
             [ "{keys:1}",  false  ],
             [ "{+keys:1}",  false  ],
             [ "{;keys:1*}",  false  ],
-            [ "?{-join|&|var,list}" , false ]
+            [ "?{-join|&|var,list}" , false ],
+            [ "/sparql{?query){&default-graph-uri*}", false ]
         ]
     }
 }
