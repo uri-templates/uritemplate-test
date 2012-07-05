@@ -13,9 +13,10 @@
             "keys"              : { "semi" : ";", "dot" : ".", "comma" : ","},
             "example"           : "red",
             "searchTerms"       : "uri templates",
+            "~thing"            : "some-user",
             "default-graph-uri" : ["http://www.example/book/","http://www.example/papers/"],
-            "query"             : "SELECT ?book ?who WHERE { ?book dc:creator ?who }",
-            "~thing"            : "some-user"
+            "query"             : "PREFIX dc: <http://purl.org/dc/elements/1.1/> SELECT ?book ?who WHERE { ?book dc:creator ?who }"
+
         },
         "testcases":[
             [ "{/id*",  false  ],
