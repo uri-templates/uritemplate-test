@@ -13,8 +13,9 @@
             "keys"              : { "semi" : ";", "dot" : ".", "comma" : ","},
             "example"           : "red",
             "searchTerms"       : "uri templates",
-            "default-graph-uri" : "http://www.example/book/",
-            "query"             : "SELECT ?book ?who WHERE { ?book dc:creator ?who }"
+            "default-graph-uri" : ["http://www.example/book/","http://www.example/papers/"],
+            "query"             : "SELECT ?book ?who WHERE { ?book dc:creator ?who }",
+            "~thing"            : "some-user"
         },
         "testcases":[
             [ "{/id*",  false  ],
@@ -39,7 +40,9 @@
             [ "{+keys:1}",  false  ],
             [ "{;keys:1*}",  false  ],
             [ "?{-join|&|var,list}" , false ],
+            [ "/people/{~thing}", false],
             [ "/sparql{?query){&default-graph-uri*}", false ]
+            
         ]
     }
 }
