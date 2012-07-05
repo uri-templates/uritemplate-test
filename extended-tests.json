@@ -37,7 +37,7 @@
             ["/test{/Some%20Thing}", "/test/foo" ],
             ["/set{?number}", "/set?number=6"],
             ["/loc{?long,lat}" , "/loc?long=37.76&lat=-122.427"],
-            ["/base{/group_id,first_name}/pages{/page,lang}{?format, q}","/base/12345/pages/5/en?format=json&q=URI%20Templates"],
+            ["/base{/group_id,first_name}/pages{/page,lang}{?format, q}","/base/12345/John/pages/5/en?format=json&q=URI%20Templates"],
             ["/sparql{?query}", "/sparql?query=PREFIX%20dc%3A%20<http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F>%20SELECT%20%3Fbook%20%3Fwho%20WHERE%20{%20%3Fbook%20dc%3Acreator%20%3Fwho%20}"]
         ]
     },
