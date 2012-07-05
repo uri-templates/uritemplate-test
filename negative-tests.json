@@ -14,7 +14,7 @@
             "example"           : "red",
             "searchTerms"       : "uri templates",
             "default-graph-uri" : "http://www.example/book/",
-            "query"             : "SELECT ?book ?who WHERE { ?book dc:creator ?who }"
+            "query"             : "PREFIX dc: <http://purl.org/dc/elements/1.1/> SELECT ?book ?who WHERE { ?book dc:creator ?who }"
         },
         "testcases":[
             [ "{/id*",  false  ],
