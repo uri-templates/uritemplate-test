@@ -43,6 +43,7 @@
             [ "?{-join|&|var,list}" , false ],
             [ "/people/{~thing}", false],
             [ "/sparql{?query){&default-graph-uri*}", false ]
+            [ "/resolution{?x, y}" , false ]
             
         ]
     }
