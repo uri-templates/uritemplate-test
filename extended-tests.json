@@ -79,5 +79,19 @@
             	"/albums/person?fields=name,id,picture&token=12345"]
             	]
         ]
+    },
+    "Additional Examples 3: Empty Variables":{
+        "variables" : {
+            "empty_list" : [],
+            "empty_assoc" : {}
+        },
+        "testcases":[
+            [ "{/empty_list}", [ "" ] ],
+            [ "{/empty_list*}", [ "" ] ],
+            [ "{?empty_list}", [ "?empty_list="] ],
+            [ "{?empty_list*}", [ "" ] ],
+            [ "{?empty_assoc}", [ "?empty_assoc=" ] ],
+            [ "{?empty_assoc*}", [ "" ] ]
+        ]
     }
 }
