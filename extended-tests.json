@@ -95,5 +95,22 @@
             [ "{?empty_assoc}", [ "?empty_assoc=" ] ],
             [ "{?empty_assoc*}", [ "" ] ]
         ]
+    },
+    "Additional Examples 4: Numeric Keys":{
+        "variables" : {
+            "42" : "The Answer to the Ultimate Question of Life, the Universe, and Everything",
+            "1337" : ["leet", "as","it", "can","be"],
+            "german" : {
+                "11": "elf",
+                "12": "zwölf"
+            }
+        },
+        "testcases":[
+            [ "{42}", "The%20Answer%20to%20the%20Ultimate%20Question%20of%20Life%2C%20the%20Universe%2C%20and%20Everything"],
+            [ "{?42}", "?42=The%20Answer%20to%20the%20Ultimate%20Question%20of%20Life%2C%20the%20Universe%2C%20and%20Everything"],
+            [ "{1337}", "leet,as,it,can,be"],
+            [ "{?1337*}", "?1337=leet&1337=as&1337=it&1337=can&1337=be"],
+            [ "{?german*}", [ "?11=elf&12=zw%C3%B6lf", "?12=zw%C3%B6lf&11=elf"] ]
+        ]
     }
 }
