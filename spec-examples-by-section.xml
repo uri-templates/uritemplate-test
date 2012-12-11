@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests>
+   <test name="3.2.1 Variable Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{count}" result="one,two,three"/>
+         <testcase template="{count*}" result="one,two,three"/>
+         <testcase template="{/count}" result="/one,two,three"/>
+         <testcase template="{/count*}" result="/one/two/three"/>
+         <testcase template="{;count}" result=";count=one,two,three"/>
+         <testcase template="{;count*}" result=";count=one;count=two;count=three"/>
+         <testcase template="{?count}" result="?count=one,two,three"/>
+         <testcase template="{?count*}" result="?count=one&amp;count=two&amp;count=three"/>
+         <testcase template="{&amp;count*}" result="&amp;count=one&amp;count=two&amp;count=three"/>
+      </testcases>
+   </test>
+   <test name="3.2.2 Simple String Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{var}" result="value"/>
+         <testcase template="{hello}" result="Hello%20World%21"/>
+         <testcase template="{half}" result="50%25"/>
+         <testcase template="O{empty}X" result="OX"/>
+         <testcase template="O{undef}X" result="OX"/>
+         <testcase template="{x,y}" result="1024,768"/>
+         <testcase template="{x,hello,y}" result="1024,Hello%20World%21,768"/>
+         <testcase template="?{x,empty}" result="?1024,"/>
+         <testcase template="?{x,undef}" result="?1024"/>
+         <testcase template="?{undef,y}" result="?768"/>
+         <testcase template="{var:3}" result="val"/>
+         <testcase template="{var:30}" result="value"/>
+         <testcase template="{list}" result="red,green,blue"/>
+         <testcase template="{list*}" result="red,green,blue"/>
+         <testcase template="{keys}"
+                   result="comma,%2C,dot,.,semi,%3Bcomma,%2C,semi,%3B,dot,.dot,.,comma,%2C,semi,%3Bdot,.,semi,%3B,comma,%2Csemi,%3B,comma,%2C,dot,.semi,%3B,dot,.,comma,%2C"/>
+         <testcase template="{keys*}"
+                   result="comma=%2C,dot=.,semi=%3Bcomma=%2C,semi=%3B,dot=.dot=.,comma=%2C,semi=%3Bdot=.,semi=%3B,comma=%2Csemi=%3B,comma=%2C,dot=.semi=%3B,dot=.,comma=%2C"/>
+      </testcases>
+   </test>
+   <test name="3.2.3 Reserved Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{+var}" result="value"/>
+         <testcase template="{+hello}" result="Hello%20World!"/>
+         <testcase template="{+half}" result="50%25"/>
+         <testcase template="{base}index" result="http%3A%2F%2Fexample.com%2Fhome%2Findex"/>
+         <testcase template="{+base}index" result="http://example.com/home/index"/>
+         <testcase template="O{+empty}X" result="OX"/>
+         <testcase template="O{+undef}X" result="OX"/>
+         <testcase template="{+path}/here" result="/foo/bar/here"/>
+         <testcase template="{+path:6}/here" result="/foo/b/here"/>
+         <testcase template="here?ref={+path}" result="here?ref=/foo/bar"/>
+         <testcase template="up{+path}{var}/here" result="up/foo/barvalue/here"/>
+         <testcase template="{+x,hello,y}" result="1024,Hello%20World!,768"/>
+         <testcase template="{+path,x}/here" result="/foo/bar,1024/here"/>
+         <testcase template="{+list}" result="red,green,blue"/>
+         <testcase template="{+list*}" result="red,green,blue"/>
+         <testcase template="{+keys}"
+                   result="comma,,,dot,.,semi,;comma,,,semi,;,dot,.dot,.,comma,,,semi,;dot,.,semi,;,comma,,semi,;,comma,,,dot,.semi,;,dot,.,comma,,"/>
+         <testcase template="{+keys*}"
+                   result="comma=,,dot=.,semi=;comma=,,semi=;,dot=.dot=.,comma=,,semi=;dot=.,semi=;,comma=,semi=;,comma=,,dot=.semi=;,dot=.,comma=,"/>
+      </testcases>
+   </test>
+   <test name="3.2.4 Fragment Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{#var}" result="#value"/>
+         <testcase template="{#hello}" result="#Hello%20World!"/>
+         <testcase template="{#half}" result="#50%25"/>
+         <testcase template="foo{#empty}" result="foo#"/>
+         <testcase template="foo{#undef}" result="foo"/>
+         <testcase template="{#x,hello,y}" result="#1024,Hello%20World!,768"/>
+         <testcase template="{#path,x}/here" result="#/foo/bar,1024/here"/>
+         <testcase template="{#path:6}/here" result="#/foo/b/here"/>
+         <testcase template="{#list}" result="#red,green,blue"/>
+         <testcase template="{#list*}" result="#red,green,blue"/>
+         <testcase template="{#keys}"
+                   result="#comma,,,dot,.,semi,;#comma,,,semi,;,dot,.#dot,.,comma,,,semi,;#dot,.,semi,;,comma,,#semi,;,comma,,,dot,.#semi,;,dot,.,comma,,"/>
+      </testcases>
+   </test>
+   <test name="3.2.5 Label Expansion with Dot-Prefix">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{.who}" result=".fred"/>
+         <testcase template="{.who,who}" result=".fred.fred"/>
+         <testcase template="{.half,who}" result=".50%25.fred"/>
+         <testcase template="www{.dom*}" result="www.example.com"/>
+         <testcase template="X{.var}" result="X.value"/>
+         <testcase template="X{.var:3}" result="X.val"/>
+         <testcase template="X{.empty}" result="X."/>
+         <testcase template="X{.undef}" result="X"/>
+         <testcase template="X{.list}" result="X.red,green,blue"/>
+         <testcase template="X{.list*}" result="X.red.green.blue"/>
+         <testcase template="{#keys}"
+                   result="#comma,,,dot,.,semi,;#comma,,,semi,;,dot,.#dot,.,comma,,,semi,;#dot,.,semi,;,comma,,#semi,;,comma,,,dot,.#semi,;,dot,.,comma,,"/>
+         <testcase template="{#keys*}"
+                   result="#comma=,,dot=.,semi=;#comma=,,semi=;,dot=.#dot=.,comma=,,semi=;#dot=.,semi=;,comma=,#semi=;,comma=,,dot=.#semi=;,dot=.,comma=,"/>
+         <testcase template="X{.empty_keys}" result="X"/>
+         <testcase template="X{.empty_keys*}" result="X"/>
+      </testcases>
+   </test>
+   <test name="3.2.6 Path Segment Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{/who}" result="/fred"/>
+         <testcase template="{/who,who}" result="/fred/fred"/>
+         <testcase template="{/half,who}" result="/50%25/fred"/>
+         <testcase template="{/who,dub}" result="/fred/me%2Ftoo"/>
+         <testcase template="{/var}" result="/value"/>
+         <testcase template="{/var,empty}" result="/value/"/>
+         <testcase template="{/var,undef}" result="/value"/>
+         <testcase template="{/var,x}/here" result="/value/1024/here"/>
+         <testcase template="{/var:1,var}" result="/v/value"/>
+         <testcase template="{/list}" result="/red,green,blue"/>
+         <testcase template="{/list*}" result="/red/green/blue"/>
+         <testcase template="{/list*,path:4}" result="/red/green/blue/%2Ffoo"/>
+         <testcase template="{/keys}"
+                   result="/comma,%2C,dot,.,semi,%3B/comma,%2C,semi,%3B,dot,./dot,.,comma,%2C,semi,%3B/dot,.,semi,%3B,comma,%2C/semi,%3B,comma,%2C,dot,./semi,%3B,dot,.,comma,%2C"/>
+         <testcase template="{/keys*}"
+                   result="/comma=%2C/dot=./semi=%3B/comma=%2C/semi=%3B/dot=./dot=./comma=%2C/semi=%3B/dot=./semi=%3B/comma=%2C/semi=%3B/comma=%2C/dot=./semi=%3B/dot=./comma=%2C"/>
+      </testcases>
+   </test>
+   <test name="3.2.7 Path-Style Parameter Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{;who}" result=";who=fred"/>
+         <testcase template="{;half}" result=";half=50%25"/>
+         <testcase template="{;empty}" result=";empty"/>
+         <testcase template="{;hello:5}" result=";hello=Hello"/>
+         <testcase template="{;v,empty,who}" result=";v=6;empty;who=fred"/>
+         <testcase template="{;v,bar,who}" result=";v=6;who=fred"/>
+         <testcase template="{;x,y}" result=";x=1024;y=768"/>
+         <testcase template="{;x,y,empty}" result=";x=1024;y=768;empty"/>
+         <testcase template="{;x,y,undef}" result=";x=1024;y=768"/>
+         <testcase template="{;list}" result=";list=red,green,blue"/>
+         <testcase template="{;list*}" result=";list=red;list=green;list=blue"/>
+         <testcase template="{;keys}"
+                   result=";keys=comma,%2C,dot,.,semi,%3B;keys=comma,%2C,semi,%3B,dot,.;keys=dot,.,comma,%2C,semi,%3B;keys=dot,.,semi,%3B,comma,%2C;keys=semi,%3B,comma,%2C,dot,.;keys=semi,%3B,dot,.,comma,%2C"/>
+         <testcase template="{;keys*}"
+                   result=";comma=%2C;dot=.;semi=%3B;comma=%2C;semi=%3B;dot=.;dot=.;comma=%2C;semi=%3B;dot=.;semi=%3B;comma=%2C;semi=%3B;comma=%2C;dot=.;semi=%3B;dot=.;comma=%2C"/>
+      </testcases>
+   </test>
+   <test name="3.2.8 Form-Style Query Expansion">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{?who}" result="?who=fred"/>
+         <testcase template="{?half}" result="?half=50%25"/>
+         <testcase template="{?x,y}" result="?x=1024&amp;y=768"/>
+         <testcase template="{?x,y,empty}" result="?x=1024&amp;y=768&amp;empty="/>
+         <testcase template="{?x,y,undef}" result="?x=1024&amp;y=768"/>
+         <testcase template="{?var:3}" result="?var=val"/>
+         <testcase template="{?list}" result="?list=red,green,blue"/>
+         <testcase template="{?list*}" result="?list=red&amp;list=green&amp;list=blue"/>
+         <testcase template="{?keys}"
+                   result="?keys=comma,%2C,dot,.,semi,%3B?keys=comma,%2C,semi,%3B,dot,.?keys=dot,.,comma,%2C,semi,%3B?keys=dot,.,semi,%3B,comma,%2C?keys=semi,%3B,comma,%2C,dot,.?keys=semi,%3B,dot,.,comma,%2C"/>
+         <testcase template="{?keys*}"
+                   result="?comma=%2C&amp;dot=.&amp;semi=%3B?comma=%2C&amp;semi=%3B&amp;dot=.?dot=.&amp;comma=%2C&amp;semi=%3B?dot=.&amp;semi=%3B&amp;comma=%2C?semi=%3B&amp;comma=%2C&amp;dot=.?semi=%3B&amp;dot=.&amp;comma=%2C"/>
+      </testcases>
+   </test>
+   <test name="3.2.9 Form-Style Query Continuation">
+      <variables>
+         <variable name="count">
+            <array>
+               <string>one</string>
+               <string>two</string>
+               <string>three</string>
+            </array>
+         </variable>
+         <variable name="dom">
+            <array>
+               <string>example</string>
+               <string>com</string>
+            </array>
+         </variable>
+         <variable name="dub">
+            <string>me/too</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="half">
+            <string>50%</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="who">
+            <string>fred</string>
+         </variable>
+         <variable name="base">
+            <string>http://example.com/home/</string>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="v">
+            <string>6</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="empty_keys">
+            <array/>
+         </variable>
+         <variable name="undef">
+            <null/>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{&amp;who}" result="&amp;who=fred"/>
+         <testcase template="{&amp;half}" result="&amp;half=50%25"/>
+         <testcase template="?fixed=yes{&amp;x}" result="?fixed=yes&amp;x=1024"/>
+         <testcase template="{&amp;var:3}" result="&amp;var=val"/>
+         <testcase template="{&amp;x,y,empty}" result="&amp;x=1024&amp;y=768&amp;empty="/>
+         <testcase template="{&amp;x,y,undef}" result="&amp;x=1024&amp;y=768"/>
+         <testcase template="{&amp;list}" result="&amp;list=red,green,blue"/>
+         <testcase template="{&amp;list*}" result="&amp;list=red&amp;list=green&amp;list=blue"/>
+         <testcase template="{&amp;keys}"
+                   result="&amp;keys=comma,%2C,dot,.,semi,%3B&amp;keys=comma,%2C,semi,%3B,dot,.&amp;keys=dot,.,comma,%2C,semi,%3B&amp;keys=dot,.,semi,%3B,comma,%2C&amp;keys=semi,%3B,comma,%2C,dot,.&amp;keys=semi,%3B,dot,.,comma,%2C"/>
+         <testcase template="{&amp;keys*}"
+                   result="&amp;comma=%2C&amp;dot=.&amp;semi=%3B&amp;comma=%2C&amp;semi=%3B&amp;dot=.&amp;dot=.&amp;comma=%2C&amp;semi=%3B&amp;dot=.&amp;semi=%3B&amp;comma=%2C&amp;semi=%3B&amp;comma=%2C&amp;dot=.&amp;semi=%3B&amp;dot=.&amp;comma=%2C"/>
+      </testcases>
+   </test>
+</tests>

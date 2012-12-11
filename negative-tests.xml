@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests>
+   <test name="Failure Tests" level="4">
+      <variables>
+         <variable name="id">
+            <string>thing</string>
+         </variable>
+         <variable name="var">
+            <string>value</string>
+         </variable>
+         <variable name="hello">
+            <string>Hello World!</string>
+         </variable>
+         <variable name="empty">
+            <string/>
+         </variable>
+         <variable name="path">
+            <string>/foo/bar</string>
+         </variable>
+         <variable name="x">
+            <string>1024</string>
+         </variable>
+         <variable name="y">
+            <string>768</string>
+         </variable>
+         <variable name="list">
+            <array>
+               <string>red</string>
+               <string>green</string>
+               <string>blue</string>
+            </array>
+         </variable>
+         <variable name="keys">
+            <object>
+               <field name="semi">
+                  <string>;</string>
+               </field>
+               <field name="dot">
+                  <string>.</string>
+               </field>
+               <field name="comma">
+                  <string>,</string>
+               </field>
+            </object>
+         </variable>
+         <variable name="example">
+            <string>red</string>
+         </variable>
+         <variable name="searchTerms">
+            <string>uri templates</string>
+         </variable>
+         <variable name="~thing">
+            <string>some-user</string>
+         </variable>
+         <variable name="default-graph-uri">
+            <array>
+               <string>http://www.example/book/</string>
+               <string>http://www.example/papers/</string>
+            </array>
+         </variable>
+         <variable name="query">
+            <string>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt; SELECT ?book ?who WHERE { ?book dc:creator ?who }</string>
+         </variable>
+      </variables>
+      <testcases>
+         <testcase template="{/id*" result="false"/>
+         <testcase template="/id*}" result="false"/>
+         <testcase template="{/?id}" result="false"/>
+         <testcase template="{var:prefix}" result="false"/>
+         <testcase template="{hello:2*}" result="false"/>
+         <testcase template="{??hello}" result="false"/>
+         <testcase template="{!hello}" result="false"/>
+         <testcase template="{=path}" result="false"/>
+         <testcase template="{$var}" result="false"/>
+         <testcase template="{|var*}" result="false"/>
+         <testcase template="{*keys?}" result="false"/>
+         <testcase template="{?empty=default,var}" result="false"/>
+         <testcase template="{var}{-prefix|/-/|var}" result="false"/>
+         <testcase template="?q={searchTerms}&amp;amp;c={example:color?}" result="false"/>
+         <testcase template="x{?empty|foo=none}" result="false"/>
+         <testcase template="/h{#hello+}" result="false"/>
+         <testcase template="/h#{hello+}" result="false"/>
+         <testcase template="/vars/:var" result="false"/>
+         <testcase template="{keys:1}" result="false"/>
+         <testcase template="{+keys:1}" result="false"/>
+         <testcase template="{;keys:1*}" result="false"/>
+         <testcase template="?{-join|&amp;|var,list}" result="false"/>
+         <testcase template="/people/{~thing}" result="false"/>
+         <testcase template="/sparql{?query){&amp;default-graph-uri*}" result="false"/>
+         <testcase template="/resolution{?x, y}" result="false"/>
+      </testcases>
+   </test>
+</tests>
