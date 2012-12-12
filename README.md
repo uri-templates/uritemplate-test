@@ -66,7 +66,10 @@ The following test files are included:
 * extended-tests.json - more complex test cases
 * negative-tests.json - invalid templates
 
-For all these test files, versions name *.xml are available as well.
+For all these test files, XML versions with the names *.xml can be
+generated with the transform-json-tests.xslt XSLT stylesheet. The XSLT
+contains the names of the above test files as a parameter, and can be
+started with any XML as input (i.e., the XML input is ignored).
 
 License
 -------
