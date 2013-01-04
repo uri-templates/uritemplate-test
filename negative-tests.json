@@ -36,7 +36,6 @@
             [ "x{?empty|foo=none}" , false ],
             [ "/h{#hello+}" , false ],
             [ "/h#{hello+}" , false ],
-            [ "/vars/:var" , false ],
             [ "{keys:1}",  false  ],
             [ "{+keys:1}",  false  ],
             [ "{;keys:1*}",  false  ],
@@ -44,7 +43,7 @@
             [ "/people/{~thing}", false],
             [ "/sparql{?query){&default-graph-uri*}", false ],
             [ "/resolution{?x, y}" , false ]
-            
+
         ]
     }
 }
