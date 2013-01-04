@@ -36,16 +36,14 @@
             [ "x{?empty|foo=none}" , false ],
             [ "/h{#hello+}" , false ],
             [ "/h#{hello+}" , false ],
-            [ "/vars/:var" , false ],
             [ "{keys:1}",  false  ],
             [ "{+keys:1}",  false  ],
             [ "{;keys:1*}",  false  ],
             [ "?{-join|&|var,list}" , false ],
             [ "/people/{~thing}", false],
             [ "/sparql{?query){&default-graph-uri*}", false ],
-            [ "/resolution{?x, y}" , false ],
-            [ "http://example.com/home/" , false]
-            
+            [ "/resolution{?x, y}" , false ]
+
         ]
     }
 }
