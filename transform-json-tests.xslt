@@ -10,6 +10,8 @@
 	<xsl:param name="xml-ext" select="'xml'"/>
 	
 	<!-- run this stylesheet with any input to generate the XML test files at output. -->
+    <!-- Run it in the uc/ or lc/ directory according to whether your implementation uses
+         upper or lower case for percent encoding. -->
 	<!-- (a popular way of doing this is to supply the XSLT to itself as the input file.) -->
 	
 	<xsl:template match="/">
