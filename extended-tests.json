@@ -92,9 +92,9 @@
         "testcases":[
             [ "{/empty_list}", [ "" ] ],
             [ "{/empty_list*}", [ "" ] ],
-            [ "{?empty_list}", [ "?empty_list="] ],
+            [ "{?empty_list}", [ ""] ],
             [ "{?empty_list*}", [ "" ] ],
-            [ "{?empty_assoc}", [ "?empty_assoc=" ] ],
+            [ "{?empty_assoc}", [ "" ] ],
             [ "{?empty_assoc*}", [ "" ] ]
         ]
     },
