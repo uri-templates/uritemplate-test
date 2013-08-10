@@ -109,6 +109,8 @@
      },
      "testcases" : [
         ["{+var}", "value"],
+        ["{/var,empty}", "/value/"],
+        ["{/var,undef}", "/value"],
         ["{+hello}", "Hello%20World!"],
         ["{+half}", "50%25"],
         ["{base}index", "http%3A%2F%2Fexample.com%2Fhome%2Findex"],
