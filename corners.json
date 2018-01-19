@@ -1,0 +1,140 @@
+{
+    "Explode Non-composite": {
+        "level": 3,
+        "variables": {
+            "token": "12345"
+        },
+        "testcases": [
+            ["{token}", "12345"],
+            ["{token*}", "12345"],
+            ["{.token}", ".12345"],
+            ["{.token*}", ".12345"],
+            ["{/token}", "/12345"],
+            ["{/token*}", "/12345"],
+            ["{;token}", ";token=12345"],
+            ["{;token*}", ";token=12345"],
+            ["{?token}", "?token=12345"],
+            ["{?token*}", "?token=12345"],
+            ["{&token}", "&token=12345"],
+            ["{&token*}", "&token=12345"]
+        ]
+    },
+    "Non-string Values": {
+        "level": 3,
+        "variables":{
+           "positive"  : true,
+           "negative"  : false,
+           "zero"      : 0,
+           "number"    : 42.24,
+           "list"      : ["one", 2, true, false, 0],
+           "keys_num"  : { "zero": 0, "one": "1" },
+           "keys_bool" : { "positive": true, "negative": false }
+        },
+        "testcases": [
+            ["{positive}", "true"],
+            ["{positive*}", "true"],
+            ["{negative}", "false"],
+            ["{negative*}", "false"],
+            ["{zero}", "0"],
+            ["{zero*}", "0"],
+            ["{number}", "42.24"],
+            ["{number*}", "42.24"],
+            ["{.positive}", ".true"],
+            ["{.positive*}", ".true"],
+            ["{.negative}", ".false"],
+            ["{.negative*}", ".false"],
+            ["{.zero}", ".0"],
+            ["{.zero*}", ".0"],
+            ["{.number}", ".42.24"],
+            ["{.number*}", ".42.24"],
+            ["{/positive}", "/true"],
+            ["{/positive*}", "/true"],
+            ["{/negative}", "/false"],
+            ["{/negative*}", "/false"],
+            ["{/zero}", "/0"],
+            ["{/zero*}", "/0"],
+            ["{/number}", "/42.24"],
+            ["{/number*}", "/42.24"],
+            ["{?positive}", "?positive=true"],
+            ["{?positive*}", "?positive=true"],
+            ["{?negative}", "?negative=false"],
+            ["{?negative*}", "?negative=false"],
+            ["{?zero}", "?zero=0"],
+            ["{?zero*}", "?zero=0"],
+            ["{?number}", "?number=42.24"],
+            ["{?number*}", "?number=42.24"],
+            ["{list}", "one,2,true,false,0"],
+            ["{list*}", "one,2,true,false,0"],
+            ["{.list}", ".one,2,true,false,0"],
+            ["{.list*}", ".one.2.true.false.0"],
+            ["{/list}", "/one,2,true,false,0"],
+            ["{/list*}", "/one/2/true/false/0"],
+            ["{?list}", "?list=one,2,true,false,0"],
+            ["{?list*}", "?list=one&list=2&list=true&list=false&list=0"],
+            ["{keys_num}", [
+                "zero,0,one,1",
+                "one,1,zero,0"
+            ]],
+            ["{keys_num*}", [
+                "zero=0,one=1",
+                "one=1,zero=0"
+            ]],
+            ["{.keys_num}", [
+                ".zero,0,one,1",
+                ".one,1,zero,0"
+            ]],
+            ["{.keys_num*}", [
+                ".zero=0.one=1",
+                ".one=1.zero=0"
+            ]],
+            ["{/keys_num}", [
+                "/zero,0,one,1",
+                "/one,1,zero,0"
+            ]],
+            ["{/keys_num*}", [
+                "/zero=0/one=1",
+                "/one=1/zero=0"
+            ]],
+            ["{?keys_num}", [
+                "?keys_num=zero,0,one,1",
+                "?keys_num=one,1,zero,0"
+            ]],
+            ["{?keys_num*}", [
+                "?zero=0&one=1",
+                "?one=1&zero=0"
+            ]],
+            ["{keys_bool}", [
+                "positive,true,negative,false",
+                "negative,false,positive,true"
+            ]],
+            ["{keys_bool*}", [
+                "positive=true,negative=false",
+                "negative=false,positive=true"
+            ]],
+            ["{.keys_bool}", [
+                ".positive,true,negative,false",
+                ".negative,false,positive,true"
+            ]],
+            ["{.keys_bool*}", [
+                ".positive=true.negative=false",
+                ".negative=false.positive=true"
+            ]],
+            ["{/keys_bool}", [
+                "/positive,true,negative,false",
+                "/negative,false,positive,true"
+            ]],
+            ["{/keys_bool*}", [
+                "/positive=true/negative=false",
+                "/negative=false/positive=true"
+            ]],
+            ["{?keys_bool}", [
+                "?keys_bool=positive,true,negative,false",
+                "?keys_bool=negative,false,positive,true"
+            ]],
+            ["{?keys_bool*}", [
+                "?positive=true&negative=false",
+                "?negative=false&positive=true"
+            ]]
+        ]
+    }
+}
