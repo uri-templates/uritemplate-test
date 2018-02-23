@@ -11,7 +11,7 @@
             "lang"         : "en",
             "geocode"      : ["37.76","-122.427"],
             "first_name"   : "John",
-            "last.name"    : "Doe", 
+            "last.name"    : "Doe",
             "Some%20Thing" : "foo",
             "number"       : 6,
             "long"         : 37.76,
@@ -28,7 +28,7 @@
         "testcases":[
 
             [ "{/id*}" , "/person" ],
-            [ "{/id*}{?fields,first_name,last.name,token}" , [ 
+            [ "{/id*}{?fields,first_name,last.name,token}" , [
             	"/person?fields=id,name,picture&first_name=John&last.name=Doe&token=12345",
             	"/person?fields=id,picture,name&first_name=John&last.name=Doe&token=12345",
             	"/person?fields=picture,name,id&first_name=John&last.name=Doe&token=12345",
@@ -68,7 +68,7 @@
         "testcases":[
 
             [ "{/id*}" , ["/person/albums","/albums/person"] ],
-            [ "{/id*}{?fields,token}" , [ 
+            [ "{/id*}{?fields,token}" , [
             	"/person/albums?fields=id,name,picture&token=12345",
             	"/person/albums?fields=id,picture,name&token=12345",
             	"/person/albums?fields=picture,name,id&token=12345",
@@ -81,7 +81,7 @@
             	"/albums/person?fields=picture,id,name&token=12345",
             	"/albums/person?fields=name,picture,id&token=12345",
             	"/albums/person?fields=name,id,picture&token=12345"]
-            	]
+            ]
         ]
     },
     "Additional Examples 3: Empty Variables":{
@@ -113,6 +113,23 @@
             [ "{1337}", "leet,as,it,can,be"],
             [ "{?1337*}", "?1337=leet&1337=as&1337=it&1337=can&1337=be"],
             [ "{?german*}", [ "?11=elf&12=zw%C3%B6lf", "?12=zw%C3%B6lf&11=elf"] ]
+        ]
+    },
+    "Additional Examples 5: Explode Combinations":{
+        "variables" : {
+            "id" : "admin",
+            "token" : "12345",
+            "tab" : "overview",
+            "keys" : {
+                "key1": "val1",
+                "key2": "val2"
+            }
+        },
+        "testcases":[
+            [ "{?id,token,keys*}", "?id=admin&token=12345&key1=val1&key2=val2" ],
+            [ "{/id}{?token,keys*}", "/admin?token=12345&key1=val1&key2=val2" ],
+            [ "{?id,token}{&keys*}", "?id=admin&token=12345&key1=val1&key2=val2" ],
+            [ "/user{/id}{?token,tab}{&keys*}", "/user/admin?token=12345&tab=overview&key1=val1&key2=val2" ]
         ]
     }
 }
