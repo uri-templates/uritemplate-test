@@ -126,10 +126,22 @@
             }
         },
         "testcases":[
-            [ "{?id,token,keys*}", "?id=admin&token=12345&key1=val1&key2=val2" ],
-            [ "{/id}{?token,keys*}", "/admin?token=12345&key1=val1&key2=val2" ],
-            [ "{?id,token}{&keys*}", "?id=admin&token=12345&key1=val1&key2=val2" ],
-            [ "/user{/id}{?token,tab}{&keys*}", "/user/admin?token=12345&tab=overview&key1=val1&key2=val2" ]
+            [ "{?id,token,keys*}", [
+                "?id=admin&token=12345&key1=val1&key2=val2",
+                "?id=admin&token=12345&key2=val2&key1=val1"]
+            ],
+            [ "{/id}{?token,keys*}", [
+                "/admin?token=12345&key1=val1&key2=val2",
+                "/admin?token=12345&key2=val2&key1=val1"]
+            ],
+            [ "{?id,token}{&keys*}", [
+                "?id=admin&token=12345&key1=val1&key2=val2",
+                "?id=admin&token=12345&key2=val2&key1=val1"]
+            ],
+            [ "/user{/id}{?token,tab}{&keys*}", [
+                "/user/admin?token=12345&tab=overview&key1=val1&key2=val2",
+                "/user/admin?token=12345&tab=overview&key2=val2&key1=val1"]
+            ]
         ]
     }
 }
