@@ -147,6 +147,7 @@
     "Additional Examples 6: Reserved Expansion":{
         "variables" : {
             "id" : "admin%2F",
+            "not_pct" : "%foo",
             "list" : ["red%25", "%2Fgreen", "blue "],
             "keys" : {
                 "key1": "val1%2F",
@@ -157,6 +158,9 @@
 			["{+id}", "admin%2F"],
 			["{#id}", "#admin%2F"],
 			["{id}", "admin%252F"],
+			["{+not_pct}", "%25foo"],
+			["{#not_pct}", "#%25foo"],
+			["{not_pct}", "%25foo"],
 			["{+list}", "red%25,%2Fgreen,blue%20"],
 			["{#list}", "#red%25,%2Fgreen,blue%20"],
 			["{list}", "red%2525,%252Fgreen,blue%20"],
