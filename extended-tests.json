@@ -28,18 +28,8 @@
         "testcases":[
 
             [ "{/id*}" , "/person" ],
-            [ "{/id*}{?fields,first_name,last.name,token}" , [
-            	"/person?fields=id,name,picture&first_name=John&last.name=Doe&token=12345",
-            	"/person?fields=id,picture,name&first_name=John&last.name=Doe&token=12345",
-            	"/person?fields=picture,name,id&first_name=John&last.name=Doe&token=12345",
-            	"/person?fields=picture,id,name&first_name=John&last.name=Doe&token=12345",
-            	"/person?fields=name,picture,id&first_name=John&last.name=Doe&token=12345",
-            	"/person?fields=name,id,picture&first_name=John&last.name=Doe&token=12345"]
-            	],
-            ["/search.{format}{?q,geocode,lang,locale,page,result_type}",
-            	[ "/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5",
-            	  "/search.json?q=URI%20Templates&geocode=-122.427,37.76&lang=en&page=5"]
-                ],
+            [ "{/id*}{?fields,first_name,last.name,token}","/person?fields=id,name,picture&first_name=John&last.name=Doe&token=12345"],
+            ["/search.{format}{?q,geocode,lang,locale,page,result_type}","/search.json?q=URI%20Templates&geocode=37.76,-122.427&lang=en&page=5"],
             ["/test{/Some%20Thing}", "/test/foo" ],
             ["/set{?number}", "/set?number=6"],
             ["/loc{?long,lat}" , "/loc?long=37.76&lat=-122.427"],
@@ -67,21 +57,8 @@
         },
         "testcases":[
 
-            [ "{/id*}" , ["/person/albums","/albums/person"] ],
-            [ "{/id*}{?fields,token}" , [
-            	"/person/albums?fields=id,name,picture&token=12345",
-            	"/person/albums?fields=id,picture,name&token=12345",
-            	"/person/albums?fields=picture,name,id&token=12345",
-            	"/person/albums?fields=picture,id,name&token=12345",
-            	"/person/albums?fields=name,picture,id&token=12345",
-            	"/person/albums?fields=name,id,picture&token=12345",
-            	"/albums/person?fields=id,name,picture&token=12345",
-            	"/albums/person?fields=id,picture,name&token=12345",
-            	"/albums/person?fields=picture,name,id&token=12345",
-            	"/albums/person?fields=picture,id,name&token=12345",
-            	"/albums/person?fields=name,picture,id&token=12345",
-            	"/albums/person?fields=name,id,picture&token=12345"]
-            ]
+            [ "{/id*}" , "/person/albums" ],
+            [ "{/id*}{?fields,token}" , "/person/albums?fields=id,name,picture&token=12345" ]
         ]
     },
     "Additional Examples 3: Empty Variables":{
