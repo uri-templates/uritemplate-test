@@ -17,7 +17,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -50,7 +50,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -104,7 +104,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -161,7 +161,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -203,7 +203,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
     },
     "testcases" : [
@@ -255,7 +255,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -307,7 +307,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -358,7 +358,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
@@ -406,7 +406,7 @@
        "x"          : "1024",
        "y"          : "768",
        "empty"      : "",
-       "empty_keys" : [],
+       "empty_keys" : {},
        "undef"      : null
      },
      "testcases" : [
