@@ -3,7 +3,7 @@ URI Template Tests
 ==================
 
 This is a set of tests for implementations of
-[RFC6570](http://tools.ietf.org/html/rfc6570) - URI Template. It is designed
+[RFC6570](https://datatracker.ietf.org/doc/html/rfc6570) - URI Template. It is designed
 to be reused by any implementation, to improve interoperability and
 implementation quality.
 
