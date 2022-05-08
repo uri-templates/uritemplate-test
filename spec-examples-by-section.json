@@ -1,4 +1,13 @@
 {
+  "2.1 Literals" :
+  {
+    "variables": {
+       "count"      : ["one", "two", "three"]
+     },
+     "testcases" : [
+        ["'{count}'", "'one,two,three'"]
+      ]
+  },
   "3.2.1 Variable Expansion" :
   {
     "variables": {
