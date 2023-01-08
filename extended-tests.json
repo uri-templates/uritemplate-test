@@ -141,9 +141,18 @@
             ["{+list}", "red%25,%2Fgreen,blue%20"],
             ["{#list}", "#red%25,%2Fgreen,blue%20"],
             ["{list}", "red%2525,%252Fgreen,blue%20"],
-            ["{+keys}", "key1,val1%2F,key2,val2%2F"],
-            ["{#keys}", "#key1,val1%2F,key2,val2%2F"],
-            ["{keys}", "key1,val1%252F,key2,val2%252F"]
+            ["{+keys}", [
+                "key1,val1%2F,key2,val2%2F",
+                "key2,val2%2F,key1,val1%2F"]
+            ],
+            ["{#keys}", [
+                "#key1,val1%2F,key2,val2%2F",
+                "#key2,val2%2F,key1,val1%2F"]
+            ],
+            ["{keys}", [
+                "key1,val1%252F,key2,val2%252F",
+                "key2,val2%252F,key1,val1%252F"]
+            ]
         ]
     }
 }
