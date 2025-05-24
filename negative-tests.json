@@ -13,7 +13,7 @@
             "x"                 : "1024",
             "y"                 : "768",
             "list"              : ["red", "green", "blue"],
-            "keys"              : { "semi" : ";", "dot" : ".", "comma" : ","},
+            "keys"              : [["semi", ";"], ["dot", "."], ["comma", ","]],
             "example"           : "red",
             "searchTerms"       : "uri templates",
             "~thing"            : "some-user",
