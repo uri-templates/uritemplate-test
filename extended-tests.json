@@ -79,10 +79,10 @@
         "variables" : {
             "42" : "The Answer to the Ultimate Question of Life, the Universe, and Everything",
             "1337" : ["leet", "as","it", "can","be"],
-            "german" : {
-                "11": "elf",
-                "12": "zwölf"
-            }
+            "german" : [
+                [ "11", "elf" ],
+                [ "12", "zwölf" ]
+            ]
         },
         "testcases":[
             [ "{42}", "The%20Answer%20to%20the%20Ultimate%20Question%20of%20Life%2C%20the%20Universe%2C%20and%20Everything"],
