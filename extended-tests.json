@@ -145,5 +145,24 @@
 			["{#keys}", "#key1,val1%2F,key2,val2%2F"],
 			["{keys}", "key1,val1%252F,key2,val2%252F"]
         ]
+    },
+    "Additional Examples 7: Prefix Modifiers with Multibyte Characters":{
+        "level": 4,
+        "variables" : {
+            "var" : "value",
+            "greek" : "αβγδε",
+            "currency" : "€uro",
+            "clef" : "𝄞stave"
+        },
+        "testcases": [
+            [ "{greek:1}", "%CE%B1" ],
+            [ "{greek:2}", "%CE%B1%CE%B2" ],
+            [ "{+greek:2}", "%CE%B1%CE%B2" ],
+            [ "{greek:30}", "%CE%B1%CE%B2%CE%B3%CE%B4%CE%B5" ],
+            [ "{currency:1}", "%E2%82%AC" ],
+            [ "{?currency:1}", "?currency=%E2%82%AC" ],
+            [ "{clef:1}", "%F0%9D%84%9E" ],
+            [ "{var:9999}", "value" ]
+        ]
     }
 }
