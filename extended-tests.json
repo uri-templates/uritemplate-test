@@ -164,5 +164,16 @@
             [ "{clef:1}", "%F0%9D%84%9E" ],
             [ "{var:9999}", "value" ]
         ]
+    },
+    "Additional Examples 8: Literal Encoding":{
+        "level": 1,
+        "variables" : {
+            "var" : "value"
+        },
+        "testcases": [
+            [ "café/{var}", "caf%C3%A9/value" ],
+            [ "x%20y/{var}", "x%20y/value" ],
+            [ "x%20y{var}z%20w", "x%20yvaluez%20w" ]
+        ]
     }
 }
