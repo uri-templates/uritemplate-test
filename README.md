@@ -61,10 +61,20 @@ Tests Included
 
 The following test files are included:
 
-* spec-examples.json - The complete set of example templates from the RFC
-* spec-examples-by-section.json - The examples, section by section
+* spec-examples.json - The example templates from the overview table in
+  section 1.2 of the RFC
+* spec-examples-by-section.json - The example templates from the expansion
+  walkthroughs in section 3.2 of the RFC, grouped by section
 * extended-tests.json - more complex test cases
 * negative-tests.json - invalid templates
+
+Note that spec-examples.json and spec-examples-by-section.json cover
+different, only partially overlapping sets of examples; neither is a superset
+of the other. spec-examples.json (the section 1.2 overview) does not include
+the isolated empty-value and undefined-variable cases (such as `foo{#empty}`,
+`X{.empty}`, and `foo{#undef}`) that the section 3.2 walkthroughs in
+spec-examples-by-section.json do. To test against every example in the RFC,
+run both files.
 
 For all these test files, XML versions with the names *.xml can be
 generated with the transform-json-tests.xslt XSLT stylesheet. The XSLT
